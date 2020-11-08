@@ -1,1 +1,155 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+            name="description"
+            content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href=".">
+
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://js.radar.io/v3/radar.min.js"></script>
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>WHACK APP</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><img src="assets/wlogo.png" height = "75" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+
+<div id ="country" style="text-align: center; padding-top: 100px; ">
+    <p style="font-size: 40px;">Welcome back, Windell!</p>
+    <br>
+    <p style="font-size: 30px;">There is 1 park nearby</p>
+    <p align = "center">
+        <iframe
+                class="map"
+                src=""
+                id = "map"
+                width="600"
+                height="450"
+                frameborder="0" style="border:0"
+                allowfullscreen>
+        </iframe>
+    </p>
+    <p style="font-size: 30px;">At Big City Park there is: </p>
+    <p style="text-align: center;"> Baskteball Court x 2.5 </p>
+    <p style="text-align: center;"> Soccer Field x 2</p>
+    <p style="text-align: center;"> Tennis Court x 3</p>
+    <br>
+</div>
+
+<p align="center"style="font-size: 25px;">Players Nearby</p>
+
+<div class="page-content page-container" id="page-content">
+    <div style = "padding-left: 30%;padding-bottom: 100px;" class="padding">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="list list-row block" style="padding-top: 5%;">
+                    <div class="list-item" style="padding-top: 5%;" data-id="19">
+                        <div><a href="#" data-abc="true"><span class="w-48 avatar gd-warning"></span></a></div>
+                        <div class="flex"> <a href="#" class="item-author text-color" data-abc="true">Sam Kuran</a>
+                            <div class="item-except text-muted text-sm h-1x">Basketball, but I'll try soccer from time to time</div>
+                        </div>
+                        <div class="no-wrap">
+                            <div class="item-date text-muted text-sm d-none d-md-block">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="list-item" style="padding-top: 5%;" data-id="7">
+                        <div><a href="#" data-abc="true"><span class="w-48 avatar gd-primary"></span></a></div>
+                        <div class="flex"> <a href="#" class="item-author text-color" data-abc="true">Kinley Adolf</a>
+                            <div class="item-except text-muted text-sm h-1x">Basketball, but I'll try soccer from time to time</div>
+                        </div>
+                        <div class="no-wrap">
+                            <div class="item-date text-muted text-sm d-none d-md-block">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="list-item" style="padding-top: 5%;" data-id="17">
+                        <div><a href="#" data-abc="true"><span class="w-48 avatar gd-warning"></span></a></div>
+                        <div class="flex"> <a href="#" class="item-author text-color" data-abc="true">Velden Kamut</a>
+                            <div class="item-except text-muted text-sm h-1x">Basketball, but I'll try soccer from time to time. We're looking for two right now</div>
+                        </div>
+                        <div class="no-wrap">
+                            <div class="item-date text-muted text-sm d-none d-md-block">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="list-item" style="padding-top: 5%;" data-id="16">
+                        <div><a href="#" data-abc="true"><span class="w-48 avatar gd-info"></span></a></div>
+                        <div class="flex"> <a href="#" class="item-author text-color" data-abc="true">Stuart Kim</a>
+                            <div class="item-except text-muted text-sm h-1x">Basketball, but I'll try soccer from time to time</div>
+                        </div>
+                        <div class="no-wrap">
+                            <div class="item-date text-muted text-sm d-none d-md-block">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="list-item"style="padding-top: 5%;" data-id="4">
+                        <div><a href="#" data-abc="true"><span class="w-48 avatar gd-success"></span></a></div>
+                        <div class="flex"> <a href="#" class="item-author text-color" data-abc="true">Simply Fry</a>
+                            <div class="item-except text-muted text-sm h-1x">Basketball, but I'll try soccer from time to time</div>
+                        </div>
+                        <div class="no-wrap">
+                            <div class="item-date text-muted text-sm d-none d-md-block">2 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<script>
+    Radar.initialize('prj_live_pk_f4e151b6558ad9e9104322f0270c3170ab7e7d4a');
+    Radar.ipGeocode(function(err, result){
+        if (err) {
+            // do something with result.location, result.events, result.user
+            console.log(err);
+            return;
+        }
+        if (result && result.address) {
+            console.log(result.address)
+            var lat =  result.address.latitude;
+            var long = result.address.longitude;
+            var start = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDj61otD_XIG0HsTkPPwDZmMWn5wNbSkjw&q=";
+            var link = start.concat(lat, ",", long);
+            console.log(start);
+            document.getElementsByTagName("iframe")[0].setAttribute("src", link);
+        }
+    });
+</script>
+</body>
+</html>
