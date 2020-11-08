@@ -125,7 +125,6 @@ app.post('/login', async (req, res) => {
         req.session.auth = true;
         req.session.username = presentaccountuser;
         res.redirect = '/';
-        res.json({message: 'User is logged in'});
 
     }
     else {

@@ -44,11 +44,20 @@
 
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+            <button id="logout" class="btn btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
         </form>
     </div>
 </nav>
+<script>
+    let logout = document.getElementById('logout');
+    logout.addEventListener('click', evt => {
+        evt.preventDefault();
+        fetch('/logout').then(res => {
+            location.reload();
+        })
 
+    })
+</script>
 
 <div id ="country" style="text-align: center; padding-top: 100px; ">
     <p style="font-size: 40px;">Welcome back, Windell!</p>
