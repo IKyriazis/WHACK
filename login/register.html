@@ -1,105 +1,72 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lan="en" and dir="Itr">
 <head>
     <meta charset="utf-8">
     <title>Login Page</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    <div id="container_demo" >
-        <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
-        <a class="hiddenanchor" id="toregister"></a>
-        <a class="hiddenanchor" id="tologin"></a>
-        <div id="wrapper">
-            <div id="login" class="animate form">
-                <form  action="mysuperscript.php" autocomplete="on"> 
-                    <h1>Log in</h1> 
-                    <p> 
-                        <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                        <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
-                    </p>
-                    <p> 
-                        <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                        <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
-                    </p>
-                    <p class="keeplogin"> 
-                        <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-                        <label for="loginkeeping">Keep me logged in</label>
-                    </p>
-                    <p class="login button"> 
-                        <input type="submit" value="Login" /> 
-                    </p>
-                    <p class="change_link">
-                        Not a member yet ?
-                        <a href="#toregister" class="to_register">Join us</a>
-                    </p>
-                </form>
-            </div>
-    
-            <div id="register" class="animate form">
-                <form  action="mysuperscript.php" autocomplete="on"> 
-                    <h1> Sign up </h1> 
-                    <p> 
-                        <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
-                        <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
-                    </p>
-                    <p> 
-                        <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
-                        <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
-                    </p>
-                    <p> 
-                        <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-                        <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
-                    </p>
-                    <p> 
-                        <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
-                        <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
-                    </p>
-                    <p class="signin button"> 
-                        <input type="submit" value="Sign up"/> 
-                    </p>
-                    <p class="change_link">  
-                        Already a member ?
-                        <a href="#tologin" class="to_register"> Go and log in </a>
-                    </p>
-                </form>
-            </div>
-            
-        </div>
-    </div> 
+    <div class="container">
+        <form class = "box">
+            <img src = "wlogo.png">
+            <hr>
+            <label for="email">Email Address:</label>
+            <input type="text" name="" placeholder="Enter Username" id="username">
+            <br>
+
+            <label for="username">Username:</label>
+            <input type="text" name="" placeholder="Enter Username" id="username">
+            <br>
+
+            <label>Password:</label>
+            <input name="password" id="password" type="password" placeholder="Enter Password" onkeyup='check();' />
+            <br>
+
+            <label>Confirm password:</label>
+            <input type="password" name="confirm_password" id="confirm_password"  placeholder="Confirm Password" onkeyup='check();' /> 
+            <span id='message'></span>
+            <br>
+
+            <center><input id="submit" type="submit" name="" value="Register!"></center>
+            <br>
+
+            <a href="index.html">Already a member? <b>Log In!</b></a>
+        </form>
+    </div>
+
+<script>
+    var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirm_password').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'matching';
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'not matching';
+        }
+    }
+
+    let submit = document.getElementById('submit');
+    let email = document.getElementById('email');
+    let user = document.getElementById('username');
+    let pass = document.getElementById('password');
+
+    submit.addEventListener('click', evt => {
+        evt.preventDefault();
+        console.log("submit clicked");
+        fetch('/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({user: user.value, pass: pass.value})
+        }).then(result => {
+            result.json().then(result => {
+                alert(result.message);
+            })
+        })
+    })
+</script>
+
 </body>
 </html>
-=======
-<!DOCTYPE html>    
-<html>    
-<head>    
-    <title>Registration Form</title>    
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>    
-<body>    
-    <h2>Registration Page</h2><br>    
-    <div class="login">    
-    <form id="login" method="get" action="login.php">    
-        <label><b>User Name     
-        </b>    
-        </label>    
-        <input type="text" name="Uname" id="Uname" placeholder="Username">    
-        <br><br>    
-        <label><b>Password     
-        </b>    
-        </label>    
-        <input type="Password" name="Pass" id="Pass" placeholder="Password">    
-        <br><br>    
-        <input type="button" name="log" id="log" value="Register">       
-        <br><br>    
-        <!-- <input type="checkbox" id="check">    
-        <span>Remember me</span>     -->
-        <!-- <br><br>    
-        Forgot <a href="#">Password</a>     -->
-    </form>     
-</div>    
-</body>    
-</html>   
->>>>>>> 6242b64e7608c598a55b86ac73da85ec5f913a1c

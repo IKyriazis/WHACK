@@ -7,7 +7,7 @@ body {
 }
 
 .box{
-    width: 350px;
+    width: 400px;
     padding: 30px;
     position: absolute;
     top: 50%;
@@ -32,7 +32,7 @@ body {
     text-align: center; 
     border: 3px solid #0367fd;
     padding: 14px, 10px;
-    width: 290px;
+    width: 350px;
     outline: none;
     color: whitesmoke;
     border-radius: 15px;
