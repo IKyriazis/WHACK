@@ -38,7 +38,7 @@
 
 <script>
     var check = function() {
-        if (document.getElementById('password').value ==
+        if (document.getElementById('password').value ===
             document.getElementById('confirm_password').value) {
             document.getElementById('message').style.color = 'green';
             document.getElementById('message').innerHTML = 'matching';
@@ -55,11 +55,10 @@
 
     submit.addEventListener('click', evt => {
         evt.preventDefault();
-        console.log("submit clicked");
-        fetch('/login', {
+        fetch('/signup', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({user: user.value, pass: pass.value})
+            body: JSON.stringify({fname: fname.value, lname: lname.value, user: user.value, pass: pass.value})
         }).then(result => {
             result.json().then(result => {
                 alert(result.message);
