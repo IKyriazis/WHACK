@@ -131,7 +131,11 @@ app.post('/login', async (req, res) => {
     else {
         res.json({message: 'Password didn\'t match'});
     }
-})
+});
+
+app.get('/getuser', (req, res) => {
+    res.json({user: req.session.username});
+});
 
 let port = process.env.PORT;
 if (port == null || port == "") {
