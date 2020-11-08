@@ -6,7 +6,7 @@ const Uuid = require('cassandra-driver').types.Uuid;
 
 const app = express();
 
-app.use(express.static("login"));
+app.use(express.static("assets"));
 app.use(express.json());
 app.use(session({ secret: "cats" }));
 
@@ -29,12 +29,12 @@ async function userExists(user) {
     let result = await client.execute(select, params);
 
     const userResult = result.first();
-
-    if (userResult) {
+    console.log(userResult);
+    console.log(user);
+    if (userResult !== null) {
         return true;
-    } else {
-        return false
     }
+    return false;
 
 }
 
@@ -84,20 +84,31 @@ async function authenticateUser(user, pass) {
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
+    if (req.session.auth === true) {
+        res.sendFile(__dirname + "/public/index.html");
+    }
+    else {
+        res.sendFile(__dirname + '/public/login/index.html');
+    }
+});
+
+app.get("/logout", function (req, res) {
+    req.session.destroy();
+    res.redirect("/");
 });
 
 // the post request end point to sign up for an account
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
     let user = req.body.user;
     let fname = req.body.fname;
     let lname = req.body.lname;
     let pass = req.body.pass;
-    if (userExists(user)) {
+    if (await userExists(user)) {
         res.json({message: 'Username already exists, try another one'});
     }
     else {
-        addUser(fname, lname, user, pass);
+        await addUser(fname, lname, user, pass);
+        res.json({message: 'Account created successfully'});
     }
 });
 
@@ -113,8 +124,9 @@ app.post('/login', async (req, res) => {
         req.session.accountSession = presentaccountid;
         req.session.auth = true;
         req.session.username = presentaccountuser;
-
+        res.redirect = '/';
         res.json({message: 'User is logged in'});
+
     }
     else {
         res.json({message: 'Password didn\'t match'});
