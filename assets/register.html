@@ -55,7 +55,6 @@
     let submit = document.getElementById('submit');
     let fname = document.getElementById('fname');
     let lname = document.getElementById('lname');
-    let email = document.getElementById('email');
     let user = document.getElementById('username');
     let pass = document.getElementById('password');
 
@@ -68,6 +67,7 @@
         }).then(result => {
             result.json().then(result => {
                 alert(result.message);
+                location.reload();
             })
         })
     })
