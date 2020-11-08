@@ -63,6 +63,7 @@
 
 
 <div id ="country" style="text-align: center; padding-top: 100px; ">
+    <p id="usertext" style="font-size: 40px;">Welcome back, Windell!</p>
     <br>
     <p style="font-size: 30px;">There is 1 park nearby</p>
 
@@ -145,6 +146,14 @@
             document.getElementsByTagName("iframe")[0].setAttribute("src", link);
         }
     });
+    window.onload = function() {
+        let usertext = document.getElementById('usertext');
+        fetch('/getuser').then(res => {
+            res.json().then(res => {
+                usertext.innerText = 'Welcome back, ' + res.user;
+            })
+        })
+    }
 </script>
 </body>
 </html>
