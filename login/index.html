@@ -9,7 +9,7 @@
 
 <body>
     <div class="container">
-        <form class = "box" action="index.html" method="POST">
+        <form class = "box">
             <img src = "wlogo.png">
             <!-- <h2>User LogIn</h2> -->
             <hr>
@@ -24,7 +24,26 @@
             <a href="register.html">Not a member? <b>Join Us</b></a>
         </form>
     </div>
-    
+
+<script>
+    let submit = document.getElementById('submit');
+    let user = document.getElementById('username');
+    let pass = document.getElementById('password');
+
+    submit.addEventListener('click', evt => {
+        evt.preventDefault();
+        console.log("submit clicked");
+        fetch('/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({user: user.value, pass: pass.value})
+        }).then(result => {
+            result.json().then(result => {
+                alert(result.message);
+            })
+        })
+    })
+</script>
 
 </body>
 </html>

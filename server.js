@@ -6,7 +6,7 @@ const Uuid = require('cassandra-driver').types.Uuid;
 
 const app = express();
 
-app.use(express.static("public"));
+app.use(express.static("login"));
 app.use(express.json());
 app.use(session({ secret: "cats" }));
 
@@ -23,7 +23,7 @@ async function userExists(user) {
 
     await client.connect();
 
-    const select = 'select * from users where user = :user';
+    const select = 'select * from users where user = :user allow filtering';
     const params = [user];
 
     let result = await client.execute(select, params);
@@ -67,7 +67,7 @@ async function authenticateUser(user, pass) {
 
     await client.connect();
 
-    const select = 'select * from users where user = :user';
+    const select = 'select * from users where user = :user allow filtering';
     const params = [user];
 
     let result = await client.execute(select, params);
@@ -88,7 +88,7 @@ app.get('/', (req, res) => {
 });
 
 // the post request end point to sign up for an account
-app.get('/signup', (req, res) => {
+app.post('/signup', (req, res) => {
     let user = req.body.user;
     let fname = req.body.fname;
     let lname = req.body.lname;
@@ -103,7 +103,7 @@ app.get('/signup', (req, res) => {
 
 
 // the post request end point to log into an account
-app.get('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     let user = req.body.user;
     let pass = req.body.pass;
     if (! await userExists(user)) {
