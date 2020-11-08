@@ -49,22 +49,26 @@
       </div>
     </nav>
 
+    <div style="z-index: -1;">hello</div>
+
+    <p align = "center">
+      <iframe
+        class="map"
+        src="" 
+        id = "map"
+        width="100%"
+        height="800px"
+        frameborder="0" style="border:0"
+        allowfullscreen>
+      </iframe>
+    </p>
+
 
     <div id ="country" style="text-align: center; padding-top: 100px; ">
       <p style="font-size: 40px;">Welcome back, Windell!</p>
       <br>
       <p style="font-size: 30px;">There is 1 park nearby</p>
-      <p align = "center">
-        <iframe
-          class="map"
-          src="" 
-          id = "map"
-          width="600"
-          height="450"
-          frameborder="0" style="border:0"
-          allowfullscreen>
-        </iframe>
-      </p>
+
       <p style="font-size: 30px;">At Big City Park there is: </p>
       <p style="text-align: center;"> Baskteball Court x 2.5 </p>
       <p style="text-align: center;"> Soccer Field x 2</p>
@@ -134,17 +138,11 @@
     <div id="root"></div>
     <script>
       Radar.initialize('prj_live_pk_f4e151b6558ad9e9104322f0270c3170ab7e7d4a');
-      Radar.ipGeocode(function(err, result){
-        if (err) {
-          // do something with result.location, result.events, result.user
-          console.log(err);
-          return; 
-        }
-        if (result && result.address) {
-          console.log(result.address)
-          var lat =  result.address.latitude; 
-          var long = result.address.longitude; 
-          var start = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDj61otD_XIG0HsTkPPwDZmMWn5wNbSkjw&q=";
+      Radar.trackOnce(function(err, result){
+        if (!err) {
+          var lat =  result.location.latitude; 
+          var long = result.location.longitude; 
+          var start = "https://www.google.com/maps/embed/v1/view?key=AIzaSyDj61otD_XIG0HsTkPPwDZmMWn5wNbSkjw&zoom=16&center=";
           var link = start.concat(lat, ",", long);
           console.log(start);
           document.getElementsByTagName("iframe")[0].setAttribute("src", link);
