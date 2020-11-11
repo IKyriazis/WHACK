@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const { Client } = require('cassandra-driver');
 const Uuid = require('cassandra-driver').types.Uuid;
-const https = require('https');
+const http = require('http');
 const fs = require('fs');
 
 const app = express();
@@ -151,8 +151,8 @@ app.get('/getuser', (req, res) => {
     res.json({user: req.session.username});
 });
 
-const httpsServer = https.createServer(credentials, app);
+const httpServer = http.createServer(app);
 
-httpsServer.listen(443, () => {
-		console.log('HTTPS Server running on port 443');
+httpServer.listen(3000, () => {
+		console.log('HTTPS Server running on port 3000');
 });
